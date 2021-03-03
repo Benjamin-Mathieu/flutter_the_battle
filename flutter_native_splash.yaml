@@ -1,0 +1,5 @@
+flutter_native_splash:
+  image: assets/icons/the-battle-logo-white.png
+  color: "ff0000"
+  image_dark: assets/icons/the-battle-logo.png
+  color_dark: "a7a6a7"
