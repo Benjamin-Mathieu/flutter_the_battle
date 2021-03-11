@@ -3,36 +3,41 @@ import 'package:flutter/rendering.dart';
 import 'package:the_battle/models/Character.dart';
 
 class CharacterPreview extends StatefulWidget {
-  const CharacterPreview({Key key, this.character}) : super(key: key);
-  final Character character;
+  // Constructeur de la classe
+  const CharacterPreview(
+      {Key key, this.character, this.onSelected, this.visited})
+      : super(key: key);
+
+  final bool visited; // boolean pour savoir si le character a été cliqué
+
+  final Character character; // récupération du character
+
+  final Function
+      onSelected; // function qui va permettre de reconnaître le character sélectionné
 
   @override
   _CharacterPreviewState createState() => _CharacterPreviewState();
 }
 
 class _CharacterPreviewState extends State<CharacterPreview> {
-  bool _selected = false;
-  Color color;
+  _CharacterPreviewState();
 
-  @override
-  void initState() {
-    super.initState();
-    color = Colors.red[400];
+  // Si un Character est cliqué la couleur change
+  Color _getColorAccodingToSelected() {
+    return (widget.visited) ? Colors.red[300] : Colors.red[400];
   }
 
+  void _onTap() {
+    this.widget.onSelected(this.widget.character);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Card(
-        color: color,
+        color: _getColorAccodingToSelected(),
         child: ListTile(
             onTap: () {
-              setState(() {
-                _selected = !_selected;
-              });
-              if (_selected) {
-                color = Colors.green[400];
-              } else {
-                color = Colors.red[400];
-              }
+              _onTap();
             },
             leading: Padding(
               padding: EdgeInsets.all(10),

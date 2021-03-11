@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.red,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'Knewave'),
-      home: AllCharactersPage(),
+      home:
+          AllCharactersPage(), // Affichage des personnages avec la classe AllCharactersPage
     );
   }
 }

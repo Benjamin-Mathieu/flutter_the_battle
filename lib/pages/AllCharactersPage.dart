@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:the_battle/models/Character.dart';
 import 'package:the_battle/widgets/CharacterMaster.dart';
 import 'package:the_battle/data/characters.dart' as staticData;
-import 'package:the_battle/models/Character.dart';
+import 'package:the_battle/widgets/CharacterDetails.dart';
 
 class AllCharactersPage extends StatefulWidget {
   AllCharactersPage({Key key}) : super(key: key);
@@ -12,36 +12,57 @@ class AllCharactersPage extends StatefulWidget {
 }
 
 class _AllCharactersPageState extends State<AllCharactersPage> {
-  List<Character> characters;
+  List<Character> _characters;
+  Character _selectedCharacter;
 
   _AllCharactersPageState() {
-    characters = staticData.characters;
+    _characters = staticData.characters;
+  }
+
+  void _onCharacterSelect(Character character) {
+    setState(() {
+      this._selectedCharacter = character;
+    });
+  }
+
+  Widget _getCharacterDetails() {
+    if (this._selectedCharacter != null) {
+      return CharacterDetails(character: this._selectedCharacter);
+    } else {
+      return Container();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red,
-        appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image(
-                  image: AssetImage('assets/icons/the-battle-logo.png'),
-                  width: 100,
-                )
-              ],
-            )),
-        body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-              Expanded(
-                child: CharacterMaster(
-                  characters: characters,
-                ),
+      backgroundColor: Colors.red,
+      appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: AssetImage('assets/icons/the-battle-logo.png'),
+                width: 100,
               )
-            ])));
+            ],
+          )),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              width: double.infinity,
+              child: _getCharacterDetails(),
+            ),
+            Expanded(
+              child: CharacterMaster(
+                  characters: _characters, onSelected: this._onCharacterSelect),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
