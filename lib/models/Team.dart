@@ -7,16 +7,15 @@ class Team {
   final String uuid;
   bool validated = false;
   String name = "My Team";
-  final Player player;
   List<Character> characters;
   static const int maxCharactersNumber = 5;
 
   Team(this.uuid) {
     characters = [];
-    characters.addAll(this.randomAutoSelectedCharacters());
+    characters.addAll(this.randomSelectedCharacters());
   }
 
-  List<Character> randomAutoSelectedCharacters() {
+  List<Character> randomSelectedCharacters() {
     List<Character> randomCharactersList = List.filled(2, null);
 
     Random random = new Random();

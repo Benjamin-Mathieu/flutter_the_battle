@@ -65,6 +65,27 @@ class _AllCharactersPageState extends State<AllCharactersPage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: IconTheme(
+          data: IconThemeData(color: Colors.black),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              IconButton(
+                tooltip: 'Characters',
+                icon: const Icon(Icons.list),
+                onPressed: () {},
+              ),
+              IconButton(
+                tooltip: 'My Team',
+                icon: const Icon(Icons.people),
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
