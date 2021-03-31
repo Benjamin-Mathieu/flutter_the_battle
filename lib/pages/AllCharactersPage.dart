@@ -13,12 +13,14 @@ class AllCharactersPage extends StatefulWidget {
 
 class _AllCharactersPageState extends State<AllCharactersPage> {
   List<Character> _characters;
-  Character _selectedCharacter;
+  Character
+      _selectedCharacter; // correspond au personnage qui va être remonté du widget Master
 
   _AllCharactersPageState() {
     _characters = staticData.characters;
   }
 
+  // Définit quelle personnage va être sélectionné
   void _onCharacterSelect(Character character) {
     setState(() {
       this._selectedCharacter = character;

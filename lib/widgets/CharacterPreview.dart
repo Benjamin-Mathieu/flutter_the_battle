@@ -8,12 +8,13 @@ class CharacterPreview extends StatefulWidget {
       {Key key, this.character, this.onSelected, this.visited})
       : super(key: key);
 
-  final bool visited; // boolean pour savoir si le character a été cliqué
+  final bool
+      visited; // la valeur est donnée par le parent et mis à jour lorsque onSelected est activé
 
-  final Character character; // récupération du character
+  final Character character;
 
   final Function
-      onSelected; // function qui va permettre de reconnaître le character sélectionné
+      onSelected; // function qui va être apellé lorsque l'action onTap sera effectué
 
   @override
   _CharacterPreviewState createState() => _CharacterPreviewState();

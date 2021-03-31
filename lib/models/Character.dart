@@ -2,6 +2,8 @@ import 'package:the_battle/models/Skill.dart';
 
 class Character {
   final String uuid, name;
+  bool selected = false;
+  bool autoSelected = false;
   String image = "";
   Skill strength, speed, cleverness, intelligence;
 
