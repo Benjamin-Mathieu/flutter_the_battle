@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:the_battle/pages/AllCharactersPage.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class TheBattleApp extends StatefulWidget {
+  @override
+  _TheBattleAppState createState() => _TheBattleAppState();
+}
+
+class _TheBattleAppState extends State<TheBattleApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
